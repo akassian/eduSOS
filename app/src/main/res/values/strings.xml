@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">eduSOS</string>
+    <string name="app_name"></string>
     <string name="search_hint">Search our answer forums</string>
     <string name="title_activity_searchable">SearchableActivity</string>
 </resources>
