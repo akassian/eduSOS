@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "686869341912",
+    "firebase_url": "https://edusos-160.firebaseio.com",
+    "project_id": "edusos-160",
+    "storage_bucket": "edusos-160.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686869341912:android:ff7cddca7050f04f2319ad",
+        "android_client_info": {
+          "package_name": "com.example.edusos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686869341912-gd3ai2bqisers4aqmf7rabjnenhmg06t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.edusos",
+            "certificate_hash": "f1cb6ae6b758041c92d0c458bbb1690b59901b2d"
+          }
+        },
+        {
+          "client_id": "686869341912-b7mp6ur4vgha5nmthfmth23eatnjviba.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.edusos",
+            "certificate_hash": "1877d9407979b3e1a982ef9208c5d3b7bf90877c"
+          }
+        },
+        {
+          "client_id": "686869341912-85qofv2d6m874gsucvpb0eo2m1uol1b7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOrD66ayum1MX26glXHskzURMdpMfAZcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "686869341912-85qofv2d6m874gsucvpb0eo2m1uol1b7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
