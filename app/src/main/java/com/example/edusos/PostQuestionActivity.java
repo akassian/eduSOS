@@ -6,11 +6,13 @@ import androidx.cardview.widget.CardView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,6 +25,8 @@ public class PostQuestionActivity extends AppCompatActivity {
     private CardView postCard;
 
     private DatabaseReference dbQuestions;
+
+    GoogleSignInAccount googleAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,11 @@ public class PostQuestionActivity extends AppCompatActivity {
                 closeKeyboard();
             }
         });
+
+        googleAccount = ((EduSOSApplication) this.getApplication()).getAccount();
+        if (googleAccount != null) {
+            Log.d("SIGNIN_POST_", googleAccount.getDisplayName() + ",   " + googleAccount.getEmail());
+        }
 
         postCard.setOnClickListener(new View.OnClickListener() {
             @Override

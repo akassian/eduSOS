@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     // For Sign in
     GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 007;
+    GoogleSignInAccount googleAccount;
 
 
     @Override
@@ -165,8 +166,10 @@ public class MainActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
             Log.d("SIGNIN_!: ", account.getDisplayName() + ",   " + account.getEmail());
+
+            ((EduSOSApplication) MainActivity.this.getApplication()).setAccount(account); // set global variable account
+
 
             //String personName = account.getDisplayName();
 
@@ -179,11 +182,13 @@ public class MainActivity extends AppCompatActivity {
             //txt_welcome.setText("Welcome "+personName+"\n"+ email);
 
             updateUI(account);   // Signed in successfully, show authenticated UI.
+
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.w("SIGNIN_", "signInResult:failed code=" + e.getStatusCode());
             Log.d("SIGNIN_", "signInResult:failed code=" + e.getStatusCode());
+
             updateUI(null);
         }
     }
@@ -193,8 +198,14 @@ public class MainActivity extends AppCompatActivity {
         if (account != null) {
             //Toast.makeText(this, account.getDisplayName(), Toast. LENGTH_LONG).show();
             Log.d("SIGNIN_UI", account.getDisplayName() + ",   " + account.getEmail());
+        } else {
+            Log.d("SIGNIN_UI", "Sign in error!");
         }
 
+//        googleAccount = ((EduSOSApplication) this.getApplication()).getAccount();
+//        if (googleAccount != null) {
+//            Log.d("SIGNIN_UI_GoogleAccount", googleAccount.getDisplayName() + ",   " + googleAccount.getEmail());
+//        }
 
     }
 
