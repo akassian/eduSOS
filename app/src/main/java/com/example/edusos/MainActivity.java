@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,12 +20,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
@@ -93,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     private void searchQuestion(String searchText) {
@@ -134,6 +132,13 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+    // Answer a Question Click Function
+    public void onAnswerClick(View button) {
+        Intent myIntent = new Intent(this, AnswerQuestionActivity.class);
+        this.startActivity(myIntent);
+
+    }
+
 
     // For Sign in
     public void onLoginClick(View button) {

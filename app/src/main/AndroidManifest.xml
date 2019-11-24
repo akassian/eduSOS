@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QuestionSearchResultActivity"></activity>
+        <activity android:name=".AnswerQuestionActivity"></activity>
+        <activity android:name=".AnswerQuestionActivity1" />
+        <activity android:name=".QuestionSearchResultActivity" />
         <activity android:name=".PostQuestionActivity" />
         <activity android:name=".AskExpertActivity" />
         <activity android:name=".MainActivity">

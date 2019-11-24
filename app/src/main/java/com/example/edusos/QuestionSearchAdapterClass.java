@@ -1,5 +1,9 @@
 package com.example.edusos;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -7,8 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSearchAdapterClass.ViewHolder> {
 
@@ -26,10 +33,28 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.subject.setText(questionList.get(position).getSubject());
         holder.question.setText(questionList.get(position).getQuestion());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("RECYCLER_", String.valueOf(position));
+                Intent intent = new Intent(view.getContext(), AnswerQuestionActivity.class);
+                intent.putParcelableArrayListExtra("matchedQuestions", questionList);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
+
+//    public void onBindViewHolder(ViewHolder holder, final int position) {
+//        holder.view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(context, "Recycle Click" + position, Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
     @Override
     public int getItemCount() {
