@@ -14,7 +14,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/cardview_subject"
+        android:id="@+id/cardview_subject1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Subject"
@@ -22,11 +22,28 @@
         android:textStyle="bold"
         android:padding="10dp"/>
     <TextView
-        android:id="@+id/cardview_question"
+        android:id="@+id/cardview_question1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="question"/>
+    <EditText
+        android:id="@+id/cardview_answer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text=""
+        android:hint="Answer"/>
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSubmit"
+        android:padding="10dp"
+        android:text="Submit" />
+
+
 </LinearLayout>
 <View
     android:layout_width="match_parent"

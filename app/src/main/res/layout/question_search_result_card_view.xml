@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/cardview_subject"
+            android:id="@+id/cardview_subject1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Subject"
@@ -20,7 +20,7 @@
             android:textStyle="bold"
             android:padding="10dp"/>
         <TextView
-            android:id="@+id/cardview_question"
+            android:id="@+id/cardview_question1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"

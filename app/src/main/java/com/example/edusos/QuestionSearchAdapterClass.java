@@ -1,7 +1,5 @@
 package com.example.edusos;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,18 +9,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSearchAdapterClass.ViewHolder> {
 
     ArrayList<Question> questionList;
+    ArrayList<String> questionKeyList;
 
-    public QuestionSearchAdapterClass(ArrayList<Question> questionList) {
+    public QuestionSearchAdapterClass(ArrayList<Question> questionList, ArrayList<String> questionKeyList) {
         this.questionList = questionList;
+        this.questionKeyList = questionKeyList;
     }
 
     @NonNull
@@ -40,8 +37,13 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
             @Override
             public void onClick(View view) {
                 Log.d("RECYCLER_", String.valueOf(position));
+                ArrayList<Question> chosenQuestion = new ArrayList<>();
+                chosenQuestion.add(questionList.get(position));
                 Intent intent = new Intent(view.getContext(), AnswerQuestionActivity.class);
-                intent.putParcelableArrayListExtra("matchedQuestions", questionList);
+                intent.putParcelableArrayListExtra("matchedQuestions", questionList); // not needed
+                intent.putParcelableArrayListExtra("chosenQuestion", chosenQuestion);
+                intent.putExtra("chosenKey", questionList.get(position));
+
                 view.getContext().startActivity(intent);
             }
         });
@@ -66,8 +68,8 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            subject = itemView.findViewById(R.id.cardview_subject);
-            question = itemView.findViewById(R.id.cardview_question);
+            subject = itemView.findViewById(R.id.cardview_subject1);
+            question = itemView.findViewById(R.id.cardview_question1);
         }
     }
 }

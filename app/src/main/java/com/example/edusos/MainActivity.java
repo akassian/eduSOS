@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private Button postButton;
 
     ArrayList<Question> allQuestions;
+    ArrayList<String> allQuestionKeys;
     DatabaseReference dbQuestion;
 
     // For Sign in
@@ -76,9 +77,12 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     allQuestions = new ArrayList<>();
+                    allQuestionKeys = new ArrayList<>();
                     for (DataSnapshot ds: dataSnapshot.getChildren()) {
                         Question question = ds.getValue(Question.class);
+                        String key = ds.getKey();
                         allQuestions.add(question);
+                        allQuestionKeys.add(key);
                     }
 //                    QuestionSearchAdapterClass questionSearchAdapterClass = new QuestionSearchAdapterClass(allQuestions);
 //                    openQuestionSearchResultActivity(questionSearchAdapterClass);
@@ -95,23 +99,31 @@ public class MainActivity extends AppCompatActivity {
 
     private void searchQuestion(String searchText) {
         ArrayList<Question> matchedQuestions = new ArrayList<>();
-        for (Question question: allQuestions) {
-            Boolean match = Boolean.FALSE;
+        ArrayList<String> matchQuestionKeys = new ArrayList<>();
+        Boolean match;
+        Question question;
+        //for (Question question: allQuestions) {
+        for (int i = 0; i < allQuestions.size(); i++) {
+            match = Boolean.FALSE;
+            question = allQuestions.get(i);
             if (question.getQuestion().toLowerCase().contains(searchText)) {
-                matchedQuestions.add(question);
-                match = Boolean.TRUE;
+                matchedQuestions.add(allQuestions.get(i));
+                matchQuestionKeys.add(allQuestionKeys.get(i));
+                        match = Boolean.TRUE;
             }
-
             if (!match && question.getAnswer() != null && question.getAnswer().size() > 0) {
-                for (int i = 0; i < question.answer.size(); i++) {
-                    if (!match && question.getAnswer().get(i).toLowerCase().contains(searchText)) {
+                for (int j = 0; j < question.answer.size(); j++) {
+                    if (!match && question.getAnswer().get(j).toLowerCase().contains(searchText)) {
                         matchedQuestions.add(question);
                         match = Boolean.TRUE;
                     }
                 }
+                if (match == Boolean.TRUE) {
+                    matchQuestionKeys.add(allQuestionKeys.get(i));
+                }
             }
         }
-        openQuestionSearchResultActivity(matchedQuestions);
+        openQuestionSearchResultActivity(matchedQuestions, matchQuestionKeys);
     }
 
 
@@ -126,9 +138,10 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
     }
 
-    public void openQuestionSearchResultActivity(ArrayList<Question> matchedQuestions) {
+    public void openQuestionSearchResultActivity(ArrayList<Question> matchedQuestions, ArrayList<String> matchQuestionKeys) {
         Intent intent = new Intent(this, QuestionSearchResultActivity.class);
         intent.putParcelableArrayListExtra("matchedQuestions", matchedQuestions);
+        intent.putStringArrayListExtra("matchQuestionKeys", matchQuestionKeys);
 
         startActivity(intent);
     }
