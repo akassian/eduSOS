@@ -40,10 +40,10 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
                 ArrayList<Question> chosenQuestion = new ArrayList<>();
                 chosenQuestion.add(questionList.get(position));
                 Intent intent = new Intent(view.getContext(), AnswerQuestionActivity.class);
-                intent.putParcelableArrayListExtra("matchedQuestions", questionList); // not needed
+                //intent.putParcelableArrayListExtra("matchedQuestions", questionList); // not needed
                 intent.putParcelableArrayListExtra("chosenQuestion", chosenQuestion);
-                intent.putExtra("chosenKey", questionList.get(position));
-
+                intent.putExtra("chosenKey", questionKeyList.get(position));
+                Log.d("CHOSENKEY_", questionKeyList.get(position));
                 view.getContext().startActivity(intent);
             }
         });
