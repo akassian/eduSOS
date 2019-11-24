@@ -145,13 +145,6 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-    // Answer a Question Click Function
-    public void onAnswerClick(View button) {
-        Intent myIntent = new Intent(this, AnswerQuestionActivity.class);
-        this.startActivity(myIntent);
-
-    }
-
 
     // For Sign in
     public void onLoginClick(View button) {
@@ -219,11 +212,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.d("SIGNIN_UI", "Sign in error!");
         }
-
-//        googleAccount = ((EduSOSApplication) this.getApplication()).getAccount();
-//        if (googleAccount != null) {
-//            Log.d("SIGNIN_UI_GoogleAccount", googleAccount.getDisplayName() + ",   " + googleAccount.getEmail());
-//        }
 
     }
 

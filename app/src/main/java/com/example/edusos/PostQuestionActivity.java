@@ -54,6 +54,7 @@ public class PostQuestionActivity extends AppCompatActivity {
         });
 
         googleAccount = ((EduSOSApplication) this.getApplication()).getAccount();
+
         if (googleAccount != null) {
             Log.d("SIGNIN_POST_", googleAccount.getDisplayName() + ",   " + googleAccount.getEmail());
         }

@@ -31,8 +31,17 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.subject.setText(questionList.get(position).getSubject());
-        holder.question.setText(questionList.get(position).getQuestion());
+        Question questionObj = questionList.get(position);
+        String answerStr = "";
+        holder.subject.setText(questionObj.getSubject());
+        holder.question.setText(questionObj.getQuestion());
+        if (questionObj.getAnswer() != null && questionObj.getAnswer().size() >0) {
+            for (String answerItem: questionObj.getAnswer()) {
+                answerStr += "Answer: "+ answerItem + "\n";
+
+            }
+        }
+        holder.answer.setText(answerStr);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,12 +73,13 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView subject, question;
+        TextView subject, question, answer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            subject = itemView.findViewById(R.id.cardview_subject1);
-            question = itemView.findViewById(R.id.cardview_question1);
+            subject = itemView.findViewById(R.id.cardview_subject);
+            question = itemView.findViewById(R.id.cardview_question);
+            answer = itemView.findViewById(R.id.cardview_answer);
         }
     }
 }

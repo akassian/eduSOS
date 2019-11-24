@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +28,7 @@ public class AnswerQuestionActivity extends AppCompatActivity {
     Question questionObj;
     EditText answerInput;
     String key;
+    GoogleSignInAccount googleAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +37,12 @@ public class AnswerQuestionActivity extends AppCompatActivity {
 
         dbQuestion = FirebaseDatabase.getInstance().getReference("question");
 
+
+
         TextView subject = (TextView) findViewById(R.id.cardview_subject1);
         TextView question = (TextView) findViewById(R.id.cardview_question1);
+        TextView previousAnswer = (TextView) findViewById(R.id.cardview_previous_answer1);
+        TextView welcome = (TextView) findViewById(R.id.cardview_welcome1);
         answerInput = (EditText) findViewById(R.id.cardview_answer1);
 
         Intent intent = getIntent();
@@ -47,6 +53,22 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         Log.d("KEY_", key);
         subject.setText(questionObj.getSubject());
         question.setText(questionObj.getQuestion());
+        String answerStr = "";
+        if (questionObj.getAnswer() != null && questionObj.getAnswer().size() >0) {
+            for (String answerItem: questionObj.getAnswer()) {
+                answerStr += "Answer: "+ answerItem + "\n";
+
+            }
+        }
+        previousAnswer.setText(answerStr);
+
+        googleAccount = ((EduSOSApplication) this.getApplication()).getAccount();
+
+        if (googleAccount != null) {
+            Log.d("SIGNIN_POST_", googleAccount.getDisplayName() + ",   " + googleAccount.getEmail());
+            welcome.setText("Welcome " + googleAccount.getDisplayName().split(" ")[0] + "!");
+
+        }
 
     }
     public void onSubmit (View view) {

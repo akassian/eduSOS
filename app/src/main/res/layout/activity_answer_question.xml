@@ -14,6 +14,15 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/cardview_welcome1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:padding="10dp"/>
+
+    <TextView
         android:id="@+id/cardview_subject1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,6 +32,12 @@
         android:padding="10dp"/>
     <TextView
         android:id="@+id/cardview_question1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="question"/>
+    <TextView
+        android:id="@+id/cardview_previous_answer1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
