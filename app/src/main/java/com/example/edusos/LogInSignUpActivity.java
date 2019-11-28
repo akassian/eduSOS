@@ -31,6 +31,16 @@ public class LogInSignUpActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, MainActivity.class);
         this.startActivity(myIntent);
     }
+    public void onExpertSignUpClick(View view) {
+        Intent myIntent = new Intent(this, RegisterExpertActivity.class);
+        this.startActivity(myIntent);
+
+    }
+    public void onStudentSignUpClick(View view) {
+        Intent myIntent = new Intent(this, RegisterStudentActivity.class);
+        this.startActivity(myIntent);
+
+    }
 
     // For Sign in
     public void onLoginClick(View button) {
