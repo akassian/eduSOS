@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Expert {
     private String id;
     private String name;
-    private String gmailAccount;
+    private String googleAccount;
     private String phone;
     private ArrayList<String> subjects;
     private Double ratePerQuestion = 0.0;
@@ -13,9 +13,9 @@ public class Expert {
     private Double rating;
 
     public Expert() {}
-    public Expert (String name, String gmailAccount, String phone, ArrayList<String> subjects, Double ratePerQuestion) {
+    public Expert (String name, String googleAccount, String phone, ArrayList<String> subjects, Double ratePerQuestion) {
         this.name = name;
-        this.gmailAccount = gmailAccount;
+        this.googleAccount = googleAccount;
         this.phone = phone;
         this.subjects = subjects;
         this.ratePerQuestion = ratePerQuestion;
@@ -38,12 +38,12 @@ public class Expert {
         this.name = name;
     }
 
-    public String getGmailAccount() {
-        return gmailAccount;
+    public String getGoogleAccount() {
+        return googleAccount;
     }
 
-    public void setGmailAccount(String gmailAccount) {
-        this.gmailAccount = gmailAccount;
+    public void setGoogleAccount(String googleAccount) {
+        this.googleAccount = googleAccount;
     }
 
     public String getPhone() {

@@ -73,6 +73,9 @@ public class AnswerQuestionActivity extends AppCompatActivity {
     }
     public void onSubmit (View view) {
         ArrayList<String> answer = questionObj.getAnswer();
+        if (answer == null) {
+            answer = new ArrayList<String>();
+        }
         String answerStr = answerInput.getText().toString();
         answer.add(answerStr);
 
