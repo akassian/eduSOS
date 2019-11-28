@@ -3,6 +3,7 @@ package com.example.edusos;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -144,6 +145,12 @@ public class MainActivity extends AppCompatActivity {
         intent.putStringArrayListExtra("matchQuestionKeys", matchQuestionKeys);
 
         startActivity(intent);
+    }
+
+    public void onLogInSignUpClick(View view) {
+        Intent myIntent = new Intent(this, LogInSignUpActivity.class);
+        this.startActivity(myIntent);
+
     }
 
     // For Sign in
