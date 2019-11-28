@@ -35,30 +35,6 @@
             app:layout_constraintStart_toStartOf="parent" />
 
 
-
-<!--        <Button-->
-<!--            android:id="@+id/chatButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="48dp"-->
-<!--            android:background="@drawable/ic_chatbutton"-->
-<!--            android:gravity="center_vertical|center_horizontal"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/textView6"-->
-<!--            app:layout_constraintEnd_toEndOf="parent" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/postButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="48dp"-->
-<!--            android:background="@drawable/ic_postquestion"-->
-<!--            android:onClick="onPostClick"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/textView3"-->
-<!--            app:layout_constraintStart_toStartOf="parent" />-->
-
-
-<!--        -->
-
         <Button
             android:id="@+id/chatButton"
             android:layout_width="wrap_content"
@@ -123,28 +99,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/textView3"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginBottom="32dp"-->
-<!--            android:fontFamily="@font/montserrat"-->
-<!--            android:text="Post a Question"-->
-<!--            android:textColor="@color/colorPrimary"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/postButton"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/postButton" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/textView6"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:fontFamily="@font/montserrat"-->
-<!--            android:text="Ask an Online Expert"-->
-<!--            android:textColor="@color/colorPrimary"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/textView3"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/chatButton"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/chatButton" />-->
 
 
         <TextView
@@ -223,17 +177,6 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/ic_search_box"/>
         </androidx.cardview.widget.CardView>
-
-<!--        <Button-->
-<!--            android:id="@+id/buttonLogIn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="152dp"-->
-<!--            android:layout_marginTop="4dp"-->
-<!--            android:onClick="onLogInSignUpClick"-->
-<!--            android:text="Log In/Sign Up"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/searchCard" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
