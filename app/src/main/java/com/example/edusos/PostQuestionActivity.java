@@ -79,9 +79,9 @@ public class PostQuestionActivity extends AppCompatActivity {
             topics.add("topic1");
             topics.add("topic2");
             ArrayList<String> answer = new ArrayList<>();
-            answer.add("answer1");
-
-            answer.add("answer2");
+//            answer.add("answer1");
+//
+//            answer.add("answer2");
 
             Question q = new Question(subject, question, topics, answer);
             dbQuestions.child(id).setValue(q);
