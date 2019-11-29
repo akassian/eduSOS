@@ -1,5 +1,6 @@
 package com.example.edusos;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -14,18 +16,29 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class LogInSignUpActivity extends AppCompatActivity {
     // For Sign in
     GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 007;
     GoogleSignInAccount googleAccount;
+    private DatabaseReference dbExperts;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in_sign_up);
+
+        dbExperts = FirebaseDatabase.getInstance().getReference("Experts");
     }
     public void onBackClick(View button) {
         Intent myIntent = new Intent(this, MainActivity.class);
@@ -50,7 +63,7 @@ public class LogInSignUpActivity extends AppCompatActivity {
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        updateUI(account);
+        updateData(account);
         signIn();
     }
     private void signIn() {
@@ -75,20 +88,18 @@ public class LogInSignUpActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             Log.d("SIGNIN_!: ", account.getDisplayName() + ",   " + account.getEmail());
 
-            ((EduSOSApplication) LogInSignUpActivity.this.getApplication()).setAccount(account); // set global variable account
+            ((EduSOSApplication) LogInSignUpActivity.this.getApplication()).setAccount(account); // save account in a global variable
 
 
             //String personName = account.getDisplayName();
 
-//            if (account.getPhotoUrl()!= null) {
-//                String personPhotoUrl = account.getPhotoUrl().toString();
-//            }
+//
 
             //String email = account.getEmail();
 
             //txt_welcome.setText("Welcome "+personName+"\n"+ email);
 
-            updateUI(account);   // Signed in successfully, show authenticated UI.
+            updateData(account);   // Signed in successfully, show authenticated UI.
 
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
@@ -96,15 +107,72 @@ public class LogInSignUpActivity extends AppCompatActivity {
             Log.w("SIGNIN_", "signInResult:failed code=" + e.getStatusCode());
             Log.d("SIGNIN_", "signInResult:failed code=" + e.getStatusCode());
 
-            updateUI(null);
+            updateData(null);
         }
     }
 
-    private void updateUI(GoogleSignInAccount account) {
-        // For example, display Welcome name if account is not null
+    private void updateData(GoogleSignInAccount account) {
+
+        String imgUrl = null;
+        String email;
+        String googleAcc;
         if (account != null) {
             //Toast.makeText(this, account.getDisplayName(), Toast. LENGTH_LONG).show();
             Log.d("SIGNIN_UI", account.getDisplayName() + ",   " + account.getEmail());
+
+            if (account.getPhotoUrl()!= null) {
+                imgUrl = account.getPhotoUrl().toString();
+
+            }
+
+
+
+
+
+
+            if (account.getEmail()!= null) {
+                email = account.getEmail().toString();
+                googleAcc = email.split("@")[0];
+
+                Query query = dbExperts.orderByChild("googleAccount").equalTo(googleAcc);
+                //query.addValueEventListener(valueEventListener);
+
+                final String imgUrl1 = imgUrl;
+
+                query.addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                                Expert expert= ds.getValue(Expert.class);
+                                String key = ds.getKey();
+                                DatabaseReference updateExpert = FirebaseDatabase.getInstance()
+                                        .getReference("Experts")
+                                        .child(key);
+                                if (imgUrl1 != null) {
+                                    updateExpert.child("imgUrl").setValue(imgUrl1);
+                                }
+                                Log.d("PHOTO_", imgUrl1);
+                                break;
+
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(LogInSignUpActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+
+            if (account.getPhotoUrl()!= null) {
+                imgUrl = account.getPhotoUrl().toString();
+            }
+
         } else {
             Log.d("SIGNIN_UI", "Sign in error!");
         }

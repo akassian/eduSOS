@@ -10,6 +10,7 @@ public class Expert implements Parcelable {
     private String name;
     private String googleAccount;
     private String phone;
+    private String imgUrl;
 
     private ArrayList<String> subjects;
     private Double ratePerQuestion = 0.0;
@@ -32,6 +33,7 @@ public class Expert implements Parcelable {
         name = source.readString();
         googleAccount = source.readString();
         phone = source.readString();
+        imgUrl = source.readString();
         subjects = source.readArrayList(String.class.getClassLoader());
         ratePerQuestion = source.readDouble();
         questionsAnswered = source.readInt();
@@ -39,6 +41,7 @@ public class Expert implements Parcelable {
         online = source.readBoolean();
 
     }
+
 
 
     public String getId() {
@@ -71,6 +74,13 @@ public class Expert implements Parcelable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public ArrayList<String> getSubjects() {
@@ -120,6 +130,7 @@ public class Expert implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.id);
+        dest.writeString(this.imgUrl);
         dest.writeString(this.name);
         dest.writeString(this.googleAccount);
         dest.writeString(this.phone);
