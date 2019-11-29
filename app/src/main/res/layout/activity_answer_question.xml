@@ -30,7 +30,7 @@
         android:padding="10dp"
         android:layout_gravity="center_horizontal"
         android:text="Please Answer the Question"
-        android:textSize="25sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent" />

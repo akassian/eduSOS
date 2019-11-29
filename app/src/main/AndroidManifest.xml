@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterStudentActivity"></activity>
+        <activity android:name=".ExpertSearchActivity"></activity>
+        <activity android:name=".RegisterStudentActivity" />
         <activity android:name=".LogInSignUpActivity" />
         <activity android:name=".RegisterExpertActivity" />
         <activity android:name=".AnswerQuestionActivity" />
