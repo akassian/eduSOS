@@ -122,13 +122,11 @@ public class LogInSignUpActivity extends AppCompatActivity {
 
             if (account.getPhotoUrl()!= null) {
                 imgUrl = account.getPhotoUrl().toString();
+                Log.d("PHOTO_2 ", imgUrl);
 
+            } else {
+                Log.d("PHOTO_5 ", "NULL");
             }
-
-
-
-
-
 
             if (account.getEmail()!= null) {
                 email = account.getEmail().toString();
@@ -145,6 +143,7 @@ public class LogInSignUpActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                                Log.d("PHOTO_1 ", String.valueOf(imgUrl1));
                                 Expert expert= ds.getValue(Expert.class);
                                 String key = ds.getKey();
                                 DatabaseReference updateExpert = FirebaseDatabase.getInstance()
@@ -153,11 +152,11 @@ public class LogInSignUpActivity extends AppCompatActivity {
                                 if (imgUrl1 != null) {
                                     updateExpert.child("imgUrl").setValue(imgUrl1);
                                 }
-                                Log.d("PHOTO_", imgUrl1);
+                                Log.d("PHOTO_",  String.valueOf(imgUrl1));
+                                Toast.makeText(LogInSignUpActivity.this, imgUrl1, Toast.LENGTH_SHORT).show();
                                 break;
 
                             }
-
                         }
                     }
 
