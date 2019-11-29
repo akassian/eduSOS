@@ -112,21 +112,11 @@ public class LogInSignUpActivity extends AppCompatActivity {
     }
 
     private void updateData(GoogleSignInAccount account) {
-
-        String imgUrl = null;
         String email;
         String googleAcc;
         if (account != null) {
             //Toast.makeText(this, account.getDisplayName(), Toast. LENGTH_LONG).show();
             Log.d("SIGNIN_UI", account.getDisplayName() + ",   " + account.getEmail());
-
-            if (account.getPhotoUrl()!= null) {
-                imgUrl = account.getPhotoUrl().toString();
-                Log.d("PHOTO_2 ", imgUrl);
-
-            } else {
-                Log.d("PHOTO_5 ", "NULL");
-            }
 
             if (account.getEmail()!= null) {
                 email = account.getEmail().toString();
@@ -135,7 +125,6 @@ public class LogInSignUpActivity extends AppCompatActivity {
                 Query query = dbExperts.orderByChild("googleAccount").equalTo(googleAcc);
                 //query.addValueEventListener(valueEventListener);
 
-                final String imgUrl1 = imgUrl;
 
                 query.addValueEventListener(new ValueEventListener() {
 
@@ -143,17 +132,16 @@ public class LogInSignUpActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                                Log.d("PHOTO_1 ", String.valueOf(imgUrl1));
+
                                 Expert expert= ds.getValue(Expert.class);
                                 String key = ds.getKey();
                                 DatabaseReference updateExpert = FirebaseDatabase.getInstance()
                                         .getReference("Experts")
                                         .child(key);
-                                if (imgUrl1 != null) {
-                                    updateExpert.child("imgUrl").setValue(imgUrl1);
-                                }
-                                Log.d("PHOTO_",  String.valueOf(imgUrl1));
-                                Toast.makeText(LogInSignUpActivity.this, imgUrl1, Toast.LENGTH_SHORT).show();
+                                updateExpert.child("online").setValue(true);
+
+                                Log.d("ONLINE_", "true");
+                                Toast.makeText(LogInSignUpActivity.this, "online", Toast.LENGTH_SHORT).show();
                                 break;
 
                             }
@@ -168,9 +156,6 @@ public class LogInSignUpActivity extends AppCompatActivity {
 
             }
 
-            if (account.getPhotoUrl()!= null) {
-                imgUrl = account.getPhotoUrl().toString();
-            }
 
         } else {
             Log.d("SIGNIN_UI", "Sign in error!");
