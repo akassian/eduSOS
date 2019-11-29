@@ -37,8 +37,6 @@ public class AnswerQuestionActivity extends AppCompatActivity {
 
         dbQuestion = FirebaseDatabase.getInstance().getReference("question");
 
-
-
         TextView subject = (TextView) findViewById(R.id.cardview_subject1);
         TextView question = (TextView) findViewById(R.id.cardview_question1);
         TextView previousAnswer = (TextView) findViewById(R.id.cardview_previous_answer1);

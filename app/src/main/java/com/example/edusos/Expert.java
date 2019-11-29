@@ -11,6 +11,7 @@ public class Expert {
     private Double ratePerQuestion = 0.0;
     private int questionsAnswered = 0;
     private Double rating;
+    private Boolean online = false;
 
     public Expert() {}
     public Expert (String name, String googleAccount, String phone, ArrayList<String> subjects, Double ratePerQuestion) {
@@ -85,5 +86,15 @@ public class Expert {
     public void setRating(Double rating) {
         this.rating = rating;
     }
+
+    public Boolean getOnline() {
+        return online;
+    }
+
+    public void setOnline(Boolean online) {
+        this.online = online;
+    }
+
+
     
 }

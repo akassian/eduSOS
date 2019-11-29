@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -23,6 +24,7 @@ public class PostQuestionActivity extends AppCompatActivity {
     private EditText editTextsubject;
     private EditText editTextquestion;
     private CardView postCard;
+    private TextView textViewWelcome;
 
     private DatabaseReference dbQuestions;
 
@@ -37,6 +39,7 @@ public class PostQuestionActivity extends AppCompatActivity {
 
         editTextsubject = (EditText) findViewById(R.id.editText);
         editTextquestion = (EditText) findViewById(R.id.editText2);
+        textViewWelcome = (TextView) findViewById(R.id.welcome);
         postCard = (CardView) findViewById(R.id.cardView2);
 
         editTextsubject.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +59,8 @@ public class PostQuestionActivity extends AppCompatActivity {
         googleAccount = ((EduSOSApplication) this.getApplication()).getAccount();
 
         if (googleAccount != null) {
-            Log.d("SIGNIN_POST_", googleAccount.getDisplayName() + ",   " + googleAccount.getEmail());
+            //Log.d("SIGNIN_POST_", googleAccount.getDisplayName() + ",   " + googleAccount.getEmail());
+            textViewWelcome.setText("Welcome "+ googleAccount.getDisplayName().split(" ")[0] + "!");
         }
 
         postCard.setOnClickListener(new View.OnClickListener() {
