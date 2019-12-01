@@ -26,6 +26,9 @@ public class Expert implements Parcelable {
         this.phone = phone;
         this.subjects = subjects;
         this.ratePerQuestion = ratePerQuestion;
+        this.rating = 4.0;
+        this.questionsAnswered = 10;
+        this.online = true;
     }
 
     public Expert(Parcel source) {

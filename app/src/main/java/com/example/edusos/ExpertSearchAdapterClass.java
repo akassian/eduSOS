@@ -15,33 +15,41 @@ import java.util.ArrayList;
 public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchAdapterClass.ViewHolder> {
 
     ArrayList<Expert> expertList;
-    //ArrayList<String> ExpertKeyList;
+    ArrayList<String> expertKeyList;
 
-    public ExpertSearchAdapterClass(ArrayList<Expert> expertList) {
+    public ExpertSearchAdapterClass(ArrayList<Expert> expertList, ArrayList<String> expertKeyList) {
         this.expertList = expertList;
-        //this.ExpertKeyList = ExpertKeyList;
+        this.expertKeyList = expertKeyList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.question_search_result_card_view, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.expert_search_result_card_view, viewGroup, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Expert expertObj = expertList.get(position);
-        //String answerStr = "";
-//        holder.subject.setText(questionObj.getSubject());
-//        holder.question.setText(questionObj.getExpert());
-//        if (questionObj.getAnswer() != null && questionObj.getAnswer().size() >0) {
-//            for (String answerItem: questionObj.getAnswer()) {
-//                answerStr += "Answer: "+ answerItem + "\n";
-//
-//            }
-//        }
-//        holder.answer.setText(answerStr);
+        holder.name.setText(expertObj.getName());
+
+
+        Log.d("ACC_NAME", expertObj.getName()+ "+++++++");
+
+        Log.d("ACC_", expertObj.getGoogleAccount()+ "+++++++");
+        holder.email.setText(expertObj.getGoogleAccount()+"@gmail.com");
+        if (expertObj.getRating() != null ) {
+            holder.rating.setText(expertObj.getRating().toString());
+        } else {
+            holder.rating.setText("No Rating");
+        }
+        if (expertObj.getRatePerQuestion() != null ) {
+            holder.ratePerQuestion.setText("$"+expertObj.getRatePerQuestion().toString());
+        } else {
+            holder.ratePerQuestion.setText("No Charge");
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,13 +80,14 @@ public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchA
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView subject, question, answer;
+        TextView name, email, rating, ratePerQuestion;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            subject = itemView.findViewById(R.id.cardview_subject);
-            question = itemView.findViewById(R.id.cardview_question);
-            answer = itemView.findViewById(R.id.cardview_answer);
+            name = itemView.findViewById(R.id.cardview_name);
+            email = itemView.findViewById(R.id.cardview_email);
+            rating = itemView.findViewById(R.id.cardview_rating);
+            ratePerQuestion = itemView.findViewById(R.id.cardview_ratePerQuestion);
         }
     }
 }

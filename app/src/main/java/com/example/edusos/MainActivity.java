@@ -144,4 +144,9 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
 
     }
+    public void onAskExpertClick(View view) {
+        Intent intent = new Intent(this, ExpertSearchActivity.class);
+        this.startActivity(intent);
+
+    }
 }
