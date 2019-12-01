@@ -66,7 +66,6 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
 //            }
 //        });
 //    }
-
     @Override
     public int getItemCount() {
         return questionList.size();

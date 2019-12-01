@@ -32,6 +32,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     private ImageButton searchBoxButton;
@@ -56,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 searchQuestion(searchText);
             }
         });
-
-
         postButton = findViewById(R.id.postButton);
         postButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     private void searchQuestion(String searchText) {
@@ -146,5 +144,4 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
 
     }
-
 }

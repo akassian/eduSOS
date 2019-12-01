@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +30,6 @@ public class PostQuestionActivity extends AppCompatActivity {
     private DatabaseReference dbQuestions;
 
     GoogleSignInAccount googleAccount;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +62,6 @@ public class PostQuestionActivity extends AppCompatActivity {
             //Log.d("SIGNIN_POST_", googleAccount.getDisplayName() + ",   " + googleAccount.getEmail());
             textViewWelcome.setText("Welcome "+ googleAccount.getDisplayName().split(" ")[0] + "!");
         }
-
         postCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
