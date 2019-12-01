@@ -1,11 +1,19 @@
 package com.example.edusos;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -14,21 +22,78 @@ public class ExpertSearchResultActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private static RecyclerView.Adapter adapter;
 
+
+    ArrayList<Expert> allExperts;
+    ArrayList<String> allExpertKeys;
+    ArrayList<Expert> matchedExperts;
+    ArrayList<String> matchExpertKeys;
+    DatabaseReference dbExpert;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expert_search_result);
 
         Intent intent = getIntent();
+        String searchText = intent.getStringExtra("searchText");
+        final String searchText1 = searchText;
+        dbExpert = FirebaseDatabase.getInstance().getReference("Experts");
+        dbExpert.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    allExperts = new ArrayList<>();
+                    allExpertKeys = new ArrayList<>();
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        Expert expert = ds.getValue(Expert.class);
+                        String key = ds.getKey();
+                        allExperts.add(expert);
+                        allExpertKeys.add(key);
+                    }
+                }
+                searchExpert(searchText1);
+                adapter = new ExpertSearchAdapterClass(matchedExperts, matchExpertKeys);
+                recyclerView = findViewById(R.id.recycleView);
+                recyclerView.setAdapter(adapter);
+            }
 
-        ArrayList<Expert> matchedExperts = intent.getParcelableArrayListExtra("matchedExperts");
-        Log.d("ACC_getExtra_name",String.valueOf( matchedExperts.get(0).getName()));
-        Log.d("ACC_getExtra_google", matchedExperts.get(0).getGoogleAccount());
-        ArrayList<String> matchExpertKeys = intent.getStringArrayListExtra("matchExpertKeys");
-        adapter = new ExpertSearchAdapterClass(matchedExperts, matchExpertKeys);
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(ExpertSearchResultActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        recyclerView = findViewById(R.id.recycleView);
-        recyclerView.setAdapter(adapter);
+
     }
 
-}
+        private void searchExpert(String searchText) {
+            matchedExperts = new ArrayList<>();
+            matchExpertKeys = new ArrayList<>();
+            //Boolean match;
+            Expert expert;
+            searchText = searchText.trim().toLowerCase();
+            //for (Expert expert: allExperts) {
+            for (int i = 0; i < allExperts.size(); i++) {
+                //match = Boolean.FALSE;
+                expert = allExperts.get(i);
+                if (expert.getSubjects() != null && expert.getSubjects().size() >0) {
+                    for (int j=0; j< expert.getSubjects().size(); j++) {
+                        if (expert.getSubjects().get(j).toLowerCase().contains(searchText)) {
+                            matchedExperts.add(allExperts.get(i));
+                            Log.d("ACC_NAME", allExperts.get(i).getName());
+                            Log.d("ACC_google", allExperts.get(i).getGoogleAccount());
+                            matchExpertKeys.add(allExpertKeys.get(i));
+                            break;
+
+                        }
+
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+

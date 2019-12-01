@@ -38,16 +38,16 @@ public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchA
         Log.d("ACC_NAME", expertObj.getName()+ "+++++++");
 
         Log.d("ACC_", expertObj.getGoogleAccount()+ "+++++++");
-        holder.email.setText(expertObj.getGoogleAccount()+"@gmail.com");
+        holder.email.setText("Email: "+expertObj.getGoogleAccount()+"@gmail.com");
         if (expertObj.getRating() != null ) {
-            holder.rating.setText(expertObj.getRating().toString());
+            holder.rating.setText("Rating: "+expertObj.getRating().toString());
         } else {
             holder.rating.setText("No Rating");
         }
         if (expertObj.getRatePerQuestion() != null ) {
-            holder.ratePerQuestion.setText("$"+expertObj.getRatePerQuestion().toString());
+            holder.ratePerQuestion.setText("Rate per question: $"+expertObj.getRatePerQuestion().toString());
         } else {
-            holder.ratePerQuestion.setText("No Charge");
+            holder.ratePerQuestion.setText("Rate per question: No Charge");
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
