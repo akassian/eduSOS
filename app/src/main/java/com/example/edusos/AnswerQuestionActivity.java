@@ -77,7 +77,6 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         String answerStr = answerInput.getText().toString();
         answer.add(answerStr);
 
-
         DatabaseReference updateData = FirebaseDatabase.getInstance()
                 .getReference("question")
                 .child(key);

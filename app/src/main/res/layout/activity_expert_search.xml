@@ -49,19 +49,7 @@ tools:context=".ExpertSearchActivity">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/splashLightbulb" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Search for An Expert"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/splashTitle" />
-
-<!--    <TextView-->
+    <!--    <TextView-->
 <!--        android:id="@+id/splashInfo"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
@@ -81,6 +69,19 @@ tools:context=".ExpertSearchActivity">
 <!--        card_view:srcCompat="@drawable/ic_topleftdesign" />-->
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Search for An Expert"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splashTitle" />
+
     <ImageView
         android:id="@+id/splashLightbulb"
         android:layout_width="70dp"
@@ -91,47 +92,64 @@ tools:context=".ExpertSearchActivity">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         card_view:srcCompat="@drawable/lightbulb" />
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="32dp"
+        android:background="#b3b3ff"
+        android:onClick="onCheckboxClicked"
+
+        android:text="experts currently online    "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.43"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/searchCard"
+        android:layout_marginTop="32dp"
         android:layout_width="330dp"
         android:layout_height="52dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        tools:layout_editor_absoluteY="490dp"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox"
 
 
-        <EditText
-            android:id="@+id/searchBox"
-            android:layout_width="300dp"
-            android:layout_height="52dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/ic_search_box"
-            android:ems="10"
-            android:hint="Enter a subject, e.g. Math, to search for experts"
-            android:inputType="textPersonName"
-            android:paddingStart="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        >
+
 
         <ImageButton
             android:id="@+id/searchBoxButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_searchsymbol"
             android:layout_marginLeft="300dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/ic_search_box"/>
+            android:background="@drawable/ic_search_box"
+            android:src="@drawable/ic_searchsymbol" />
+
+        <EditText
+            android:id="@+id/searchBox"
+            android:layout_width="303dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="160dp"
+            android:background="@drawable/ic_search_box"
+            android:ems="10"
+            android:hint="Enter a subject, e.g. Math, to search for experts"
+            android:inputType="textPersonName"
+            android:paddingStart="15dp" />
+
     </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

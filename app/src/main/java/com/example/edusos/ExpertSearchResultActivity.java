@@ -36,7 +36,9 @@ public class ExpertSearchResultActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String searchText = intent.getStringExtra("searchText");
+        final Boolean onlineOnly = intent.getBooleanExtra("onlineOnly", false);
         final String searchText1 = searchText;
+        final Boolean onlineOnly1 = onlineOnly;
         dbExpert = FirebaseDatabase.getInstance().getReference("Experts");
         dbExpert.addValueEventListener(new ValueEventListener() {
             @Override
@@ -51,7 +53,7 @@ public class ExpertSearchResultActivity extends AppCompatActivity {
                         allExpertKeys.add(key);
                     }
                 }
-                searchExpert(searchText1);
+                searchExpert(searchText1, onlineOnly1);
                 adapter = new ExpertSearchAdapterClass(matchedExperts, matchExpertKeys);
                 recyclerView = findViewById(R.id.recycleView);
                 recyclerView.setAdapter(adapter);
@@ -66,7 +68,7 @@ public class ExpertSearchResultActivity extends AppCompatActivity {
 
     }
 
-        private void searchExpert(String searchText) {
+        private void searchExpert(String searchText, Boolean onlineOnly) {
             matchedExperts = new ArrayList<>();
             matchExpertKeys = new ArrayList<>();
 
@@ -79,10 +81,14 @@ public class ExpertSearchResultActivity extends AppCompatActivity {
                 if (expert.getSubjects() != null && expert.getSubjects().size() >0) {
                     for (int j=0; j< expert.getSubjects().size(); j++) {
                         if (expert.getSubjects().get(j).toLowerCase().contains(searchText)) {
-                            matchedExperts.add(allExperts.get(i));
+                            if (!onlineOnly || (onlineOnly && expert.getOnline())) {
+                                matchedExperts.add(allExperts.get(i));
 //                            Log.d("ACC_NAME", allExperts.get(i).getName());
 //                            Log.d("ACC_google", allExperts.get(i).getGoogleAccount());
-                            matchExpertKeys.add(allExpertKeys.get(i));
+                                matchExpertKeys.add(allExpertKeys.get(i));
+
+                            }
+
                             break;
 
                         }

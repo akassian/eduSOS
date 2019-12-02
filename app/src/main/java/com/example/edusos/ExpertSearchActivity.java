@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class ExpertSearchActivity extends AppCompatActivity {
     private ImageButton searchBoxButton;
     private EditText searchBox;
+    private Boolean onlineOnly = false;
 
     ArrayList<Expert> allExperts;
     ArrayList<String> allExpertKeys;
@@ -43,6 +44,7 @@ public class ExpertSearchActivity extends AppCompatActivity {
         });
     }
     public void onCheckboxClicked (View view) {
+        onlineOnly = !onlineOnly;
 
     }
 
@@ -50,6 +52,7 @@ public class ExpertSearchActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ExpertSearchResultActivity.class);
 
         intent.putExtra("searchText", searchText);
+        intent.putExtra("onlineOnly", onlineOnly);
 
         startActivity(intent);
     }
