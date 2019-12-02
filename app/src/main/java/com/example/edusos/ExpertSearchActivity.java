@@ -42,6 +42,9 @@ public class ExpertSearchActivity extends AppCompatActivity {
             }
         });
     }
+    public void onCheckboxClicked (View view) {
+
+    }
 
     public void goToExpertSearchResultActivity(String searchText) {
         Intent intent = new Intent(this, ExpertSearchResultActivity.class);

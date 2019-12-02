@@ -1,5 +1,6 @@
 package com.example.edusos;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,10 +35,6 @@ public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchA
         Expert expertObj = expertList.get(position);
         holder.name.setText(expertObj.getName());
 
-
-        Log.d("ACC_NAME", expertObj.getName()+ "+++++++");
-
-        Log.d("ACC_", expertObj.getGoogleAccount()+ "+++++++");
         holder.email.setText("Email: "+expertObj.getGoogleAccount()+"@gmail.com");
         if (expertObj.getRating() != null ) {
             holder.rating.setText("Rating: "+expertObj.getRating().toString());
@@ -53,12 +50,26 @@ public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchA
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("RECYCLER_", String.valueOf(position));
-                ArrayList<Expert> chosenExpert = new ArrayList<>();
-                chosenExpert.add(expertList.get(position));
-                Intent intent = new Intent(view.getContext(), AnswerQuestionActivity.class);
-                //intent.putParcelableArrayListExtra("matchedQuestions", expertList); // not needed
-//
+                Expert chosenExpert = expertList.get(position);
+                Intent intent = new Intent(view.getContext(), ExpertProfileActivity.class);
+                intent.putExtra("chosenKey", expertKeyList.get(position));
+                intent.putExtra("name", chosenExpert.getName());
+                intent.putExtra("googleAcc", chosenExpert.getGoogleAccount());
+                Log.d("ACC_adapter",chosenExpert.getGoogleAccount() );
+                intent.putExtra("phone", chosenExpert.getPhone());
+                intent.putStringArrayListExtra("subjects", chosenExpert.getSubjects());
+                intent.putExtra("rating", chosenExpert.getRating());
+                intent.putExtra("ratePerQuestion", chosenExpert.getRatePerQuestion());
+                intent.putExtra("questionsAnswered", chosenExpert.getQuestionsAnswered());
+                intent.putExtra("online", chosenExpert.getOnline());
+
+
+//                Log.d("RECYCLER_", String.valueOf(position));
+//                ArrayList<Expert> chosenExpert = new ArrayList<>();
+//                chosenExpert.add(expertList.get(position));
+//                Intent intent = new Intent(view.getContext(), AnswerQuestionActivity.class);
+//                //intent.putParcelableArrayListExtra("matchedQuestions", expertList); // not needed
+////
 
                 view.getContext().startActivity(intent);
             }

@@ -69,19 +69,19 @@ public class ExpertSearchResultActivity extends AppCompatActivity {
         private void searchExpert(String searchText) {
             matchedExperts = new ArrayList<>();
             matchExpertKeys = new ArrayList<>();
-            //Boolean match;
+
             Expert expert;
             searchText = searchText.trim().toLowerCase();
-            //for (Expert expert: allExperts) {
+
             for (int i = 0; i < allExperts.size(); i++) {
-                //match = Boolean.FALSE;
+
                 expert = allExperts.get(i);
                 if (expert.getSubjects() != null && expert.getSubjects().size() >0) {
                     for (int j=0; j< expert.getSubjects().size(); j++) {
                         if (expert.getSubjects().get(j).toLowerCase().contains(searchText)) {
                             matchedExperts.add(allExperts.get(i));
-                            Log.d("ACC_NAME", allExperts.get(i).getName());
-                            Log.d("ACC_google", allExperts.get(i).getGoogleAccount());
+//                            Log.d("ACC_NAME", allExperts.get(i).getName());
+//                            Log.d("ACC_google", allExperts.get(i).getGoogleAccount());
                             matchExpertKeys.add(allExpertKeys.get(i));
                             break;
 
