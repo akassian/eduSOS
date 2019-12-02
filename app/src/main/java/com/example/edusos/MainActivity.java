@@ -78,8 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         allQuestions.add(question);
                         allQuestionKeys.add(key);
                     }
-//                    QuestionSearchAdapterClass questionSearchAdapterClass = new QuestionSearchAdapterClass(allQuestions);
-//                    openQuestionSearchResultActivity(questionSearchAdapterClass);
+
                 }
             }
 

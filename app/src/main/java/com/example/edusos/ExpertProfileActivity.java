@@ -75,9 +75,6 @@ public class ExpertProfileActivity extends AppCompatActivity {
         textViewQuestionsAnswered.setText("Questions Answered: "+questionAnswered);
         textViewEmail.setText("Email: "+ email);
 
-
-//        previousAnswer.setText(answerStr);
-
 //        googleAccount = ((EduSOSApplication) this.getApplication()).getAccount();
 //
 //        if (googleAccount != null) {

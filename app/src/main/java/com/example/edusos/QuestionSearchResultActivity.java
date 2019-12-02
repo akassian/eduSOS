@@ -28,6 +28,4 @@ public class QuestionSearchResultActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycleView);
         recyclerView.setAdapter(adapter);
     }
-
-
 }

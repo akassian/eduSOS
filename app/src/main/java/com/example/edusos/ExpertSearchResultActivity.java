@@ -83,8 +83,6 @@ public class ExpertSearchResultActivity extends AppCompatActivity {
                         if (expert.getSubjects().get(j).toLowerCase().contains(searchText)) {
                             if (!onlineOnly || (onlineOnly && expert.getOnline())) {
                                 matchedExperts.add(allExperts.get(i));
-//                            Log.d("ACC_NAME", allExperts.get(i).getName());
-//                            Log.d("ACC_google", allExperts.get(i).getGoogleAccount());
                                 matchExpertKeys.add(allExpertKeys.get(i));
 
                             }

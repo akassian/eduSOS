@@ -19,11 +19,31 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:orientation="vertical">
-
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/splashLightbulb2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/lightbulb" />
+
+                <TextView
+                    android:id="@+id/splashTitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="eduSoS"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="36sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/splashLightbulb2" />
 
                 <TextView
                     android:id="@+id/cardview_title"
@@ -38,7 +58,7 @@
                     android:textSize="30sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/splashTitle2" />
 
                 <TextView
                     android:id="@+id/cardview_name"
@@ -51,8 +71,6 @@
                     android:text="Name"
                     android:textSize="25sp"
                     android:textStyle="bold"
-
-
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardview_title" />
@@ -94,11 +112,6 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="Subjects"/>
-
-
-
-
-
 
         </LinearLayout>
         <View

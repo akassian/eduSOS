@@ -35,8 +35,6 @@ tools:context=".ExpertSearchActivity">
             app:srcCompat="@drawable/ic_backarrow" />
     </androidx.cardview.widget.CardView>
 
-
-
     <TextView
         android:id="@+id/splashTitle"
         android:layout_width="wrap_content"
@@ -48,25 +46,6 @@ tools:context=".ExpertSearchActivity">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/splashLightbulb" />
-
-    <!--    <TextView-->
-<!--        android:id="@+id/splashInfo"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Can't find what you're looking for?"-->
-<!--        android:textSize="18sp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        tools:layout_editor_absoluteY="523dp" />-->
-
-
-<!--    <ImageView-->
-<!--        android:id="@+id/splashAccent"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        card_view:srcCompat="@drawable/ic_topleftdesign" />-->
 
 
     <TextView
@@ -101,12 +80,11 @@ tools:context=".ExpertSearchActivity">
         android:background="#b3b3ff"
         android:onClick="onCheckboxClicked"
 
-        android:text="experts currently online    "
+        android:text="Experts currently online    "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
 
 
     <androidx.cardview.widget.CardView
@@ -123,10 +101,7 @@ tools:context=".ExpertSearchActivity">
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="490dp"
         app:layout_constraintTop_toBottomOf="@+id/checkbox"
-
-
         >
-
 
         <ImageButton
             android:id="@+id/searchBoxButton"

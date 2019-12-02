@@ -58,14 +58,6 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
         });
     }
 
-//    public void onBindViewHolder(ViewHolder holder, final int position) {
-//        holder.view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(context, "Recycle Click" + position, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
     @Override
     public int getItemCount() {
         return questionList.size();

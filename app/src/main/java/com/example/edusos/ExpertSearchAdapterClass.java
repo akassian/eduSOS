@@ -63,27 +63,11 @@ public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchA
                 intent.putExtra("questionsAnswered", chosenExpert.getQuestionsAnswered());
                 intent.putExtra("online", chosenExpert.getOnline());
 
-
-//                Log.d("RECYCLER_", String.valueOf(position));
-//                ArrayList<Expert> chosenExpert = new ArrayList<>();
-//                chosenExpert.add(expertList.get(position));
-//                Intent intent = new Intent(view.getContext(), AnswerQuestionActivity.class);
-//                //intent.putParcelableArrayListExtra("matchedQuestions", expertList); // not needed
-////
-
                 view.getContext().startActivity(intent);
             }
         });
     }
 
-//    public void onBindViewHolder(ViewHolder holder, final int position) {
-//        holder.view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(context, "Recycle Click" + position, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 
     @Override
     public int getItemCount() {
