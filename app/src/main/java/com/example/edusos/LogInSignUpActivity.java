@@ -140,6 +140,8 @@ public class LogInSignUpActivity extends AppCompatActivity {
                                     updateExpert.child("online").setValue(onlineStatus1);
 
                                     Log.d("ONLINE_", String.valueOf(onlineStatus1));
+                                    ((EduSOSApplication) LogInSignUpActivity.this.getApplication()).setLoggedInAsExpert(true);
+                                    Log.d("LOGIN_", String.valueOf(((EduSOSApplication) LogInSignUpActivity.this.getApplication()).getLoggedInAsExpert()));
 
                                     //Toast.makeText(LogInSignUpActivity.this, "Online Status Updated!", Toast.LENGTH_SHORT).show();
                                     break;
@@ -183,6 +185,8 @@ public class LogInSignUpActivity extends AppCompatActivity {
     }
     private void signOutUpdate() {
         ((EduSOSApplication) LogInSignUpActivity.this.getApplication()).setAccount(null);
+        ((EduSOSApplication) LogInSignUpActivity.this.getApplication()).setLoggedInAsExpert(false);
 
     }
+
 }
