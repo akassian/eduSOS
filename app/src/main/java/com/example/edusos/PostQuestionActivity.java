@@ -66,7 +66,8 @@ public class PostQuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 postQuestion();
-                Toast.makeText(PostQuestionActivity.this, "post success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                        PostQuestionActivity.this, "post success", Toast.LENGTH_SHORT).show();
             }
         });
     }
