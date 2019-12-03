@@ -64,7 +64,12 @@ public class AnswerQuestionActivity extends AppCompatActivity {
 
         if (googleAccount != null) {
             Log.d("SIGNIN_POST_", googleAccount.getDisplayName() + ",   " + googleAccount.getEmail());
-            welcome.setText("Welcome " + googleAccount.getDisplayName().split(" ")[0] + "!");
+            if (((EduSOSApplication) AnswerQuestionActivity.this.getApplication()).getLoggedInAsExpert())
+            {
+                welcome.setText("Welcome Expert " + googleAccount.getDisplayName().split(" ")[0] + "!");
+            } else {
+                welcome.setText("Welcome " + googleAccount.getDisplayName().split(" ")[0] + "!");
+            }
 
         }
 
