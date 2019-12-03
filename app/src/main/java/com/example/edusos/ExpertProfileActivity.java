@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -20,12 +21,14 @@ public class ExpertProfileActivity extends AppCompatActivity {
     Expert expertObj;
 //    EditText answerInput;
     String key;
-    String name, email, phone;
+    String name, email, phone, account;
     Double rating, ratePerQuestion;
     int questionAnswered;
     Boolean online;
     GoogleSignInAccount googleAccount;
     ArrayList<String> subjects;
+
+    private Button chatWithExpertBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,8 @@ public class ExpertProfileActivity extends AppCompatActivity {
         Log.d("KEY_", key);
 
         name = intent.getStringExtra("name");
-        email  = intent.getStringExtra("googleAcc")+"@gmail.com";
+        account = intent.getStringExtra("googleAcc");
+        email  = account + "@gmail.com";
         phone = intent.getStringExtra("phone");
         rating = intent.getDoubleExtra("rating", 4.0);
         ratePerQuestion = intent.getDoubleExtra("ratePerQuestion", 0.0);
@@ -82,8 +86,23 @@ public class ExpertProfileActivity extends AppCompatActivity {
 //            welcome.setText("Welcome " + googleAccount.getDisplayName().split(" ")[0] + "!");
 //
 //        }
+
+        chatWithExpertBtn = findViewById(R.id.chatWithExpertBtn);
+        chatWithExpertBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCharActivity();
+            }
+        });
+
     }
 
+    public void openCharActivity() {
+        Intent intent = new Intent(this, ChatActivity.class);
+        intent.putExtra("name", name);
+        intent.putExtra("googleAcc", account);
+        startActivity(intent);
+    }
 
 
 }
