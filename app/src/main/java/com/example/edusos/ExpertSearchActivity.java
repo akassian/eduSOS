@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -40,6 +41,17 @@ public class ExpertSearchActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String searchText = searchBox.getText().toString().trim().toLowerCase();
                 goToExpertSearchResultActivity(searchText);
+            }
+        });
+        searchBox.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    String searchText = searchBox.getText().toString().trim().toLowerCase();
+                    goToExpertSearchResultActivity(searchText);
+                    return true;
+                }
+                return false;
             }
         });
     }

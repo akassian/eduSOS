@@ -7,29 +7,35 @@
     tools:context=".ExpertProfileActivity">
 
     <androidx.cardview.widget.CardView
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_margin="5dp"
-        app:cardElevation="5dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        android:layout_margin="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:orientation="vertical">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/splashLightbulb2"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="36dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintEnd_toEndOf="@+id/splashTitle2"
+                    app:layout_constraintStart_toStartOf="@+id/splashTitle2"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/lightbulb" />
 
@@ -37,11 +43,11 @@
                     android:id="@+id/splashTitle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
                     android:fontFamily="@font/montserrat"
                     android:text="eduSoS"
                     android:textColor="@color/colorPrimary"
                     android:textSize="36sp"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/splashLightbulb2" />
 
@@ -52,28 +58,87 @@
                     android:layout_centerInParent="true"
                     android:layout_gravity="center_horizontal"
 
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="12dp"
                     android:text="Expert Profile"
-                    android:textSize="30sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="22sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/splashTitle2"
+                    app:layout_constraintStart_toStartOf="@+id/splashTitle2"
                     app:layout_constraintTop_toBottomOf="@+id/splashTitle2" />
 
                 <TextView
                     android:id="@+id/cardview_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:padding="10dp"
+                    android:fontFamily="@font/montserrat"
                     android:text="Name"
                     android:textSize="25sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardview_title" />
+                    app:layout_constraintHorizontal_bias="0.49"
+                    app:layout_constraintStart_toEndOf="@+id/divider7"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/divider7"
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="12dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/splashTitle2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/divider8"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/cardview_ratePerQuestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/green_rrect"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingLeft="7dp"
+                    android:paddingTop="1dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="3dp"
+                    android:text="$4.25"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toStartOf="@+id/cardview_rating"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/cardview_name"
+                    app:layout_constraintTop_toBottomOf="@+id/cardview_name" />
+
+                <TextView
+                    android:id="@+id/cardview_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/gold_rrect"
+                    android:drawableLeft="@drawable/ic_star_border_24px"
+                    android:drawablePadding="2dp"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingStart="7dp"
+                    android:paddingTop="1dp"
+                    android:paddingEnd="7dp"
+                    android:paddingBottom="3dp"
+                    android:text="4.2 / 5"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/cardview_ratePerQuestion" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -81,59 +146,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Currently online"/>
-            <TextView
-                android:id="@+id/cardview_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="Email"/>
-            <TextView
-                android:id="@+id/cardview_rating"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="Rating"/>
-            <TextView
-                android:id="@+id/cardview_ratePerQuestion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="Rate per question"/>
-            <TextView
-                android:id="@+id/cardview_questionAnswered"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="Question answered"/>
+                android:text="Currently online" />
+
             <TextView
                 android:id="@+id/cardview_subjects"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Subjects"/>
+                android:text="Email" />
+
+            <TextView
+                android:id="@+id/cardview_questionAnswered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Question answered" />
+
+            <TextView
+                android:id="@+id/cardview_subjects"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Subjects" />
 
             <Button
                 android:id="@+id/chatWithExpertBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="chat now"/>
+                android:text="chat now" />
 
         </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#000"/>
+
     </androidx.cardview.widget.CardView>
-
-
-
-
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

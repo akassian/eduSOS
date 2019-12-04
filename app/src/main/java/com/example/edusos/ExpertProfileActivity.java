@@ -6,12 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
 import android.widget.Button;
 
 import java.util.ArrayList;
@@ -39,7 +38,7 @@ public class ExpertProfileActivity extends AppCompatActivity {
 
         TextView textViewName= (TextView) findViewById(R.id.cardview_name);
         TextView textViewOnline = (TextView) findViewById(R.id.cardview_online);
-        TextView textViewEmail = (TextView) findViewById(R.id.cardview_email);
+        TextView textViewEmail = (TextView) findViewById(R.id.cardview_subjects);
         TextView textViewRating = (TextView) findViewById(R.id.cardview_rating);
         TextView textViewRatePerQuestion = (TextView) findViewById(R.id.cardview_ratePerQuestion);
 
@@ -70,12 +69,12 @@ public class ExpertProfileActivity extends AppCompatActivity {
         }
 
         textViewName.setText(name);
-        textViewRatePerQuestion.setText("Rate per question: $"+ ratePerQuestion.toString());
+        textViewRatePerQuestion.setText("$"+ ratePerQuestion.toString());
         textViewSubjects.setText(subjectStr);
         if (!online) {
             textViewOnline.setText("Currently not online");
         }
-        textViewRating.setText("Rating: "+rating);
+        textViewRating.setText(rating + " / 5");
         textViewQuestionsAnswered.setText("Questions Answered: "+questionAnswered);
         textViewEmail.setText("Email: "+ email);
 

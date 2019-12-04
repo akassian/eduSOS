@@ -1,6 +1,5 @@
 package com.example.edusos;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,16 +34,28 @@ public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchA
         Expert expertObj = expertList.get(position);
         holder.name.setText(expertObj.getName());
 
-        holder.email.setText("Email: "+expertObj.getGoogleAccount()+"@gmail.com");
+        String subjectStr = "Subjects:";
+        ArrayList<String> subjects = expertObj.getSubjects();
+
+        if (subjects != null && subjects.size() >0) {
+            for (String subject: subjects) {
+                subjectStr += " " + subject + " |";
+            }
+            subjectStr = subjectStr.substring(0, subjectStr.length() - 1);
+        } else {
+            subjectStr += " N/A";
+        }
+        holder.subjects.setText(subjectStr);
+
         if (expertObj.getRating() != null ) {
-            holder.rating.setText("Rating: "+expertObj.getRating().toString());
+            holder.rating.setText(expertObj.getRating().toString() + " / 5");
         } else {
             holder.rating.setText("No Rating");
         }
         if (expertObj.getRatePerQuestion() != null ) {
-            holder.ratePerQuestion.setText("Rate per question: $"+expertObj.getRatePerQuestion().toString());
+            holder.ratePerQuestion.setText("$" + expertObj.getRatePerQuestion().toString());
         } else {
-            holder.ratePerQuestion.setText("Rate per question: No Charge");
+            holder.ratePerQuestion.setText("No Charge");
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -75,12 +86,12 @@ public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchA
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, email, rating, ratePerQuestion;
+        TextView name, subjects, rating, ratePerQuestion;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.cardview_name);
-            email = itemView.findViewById(R.id.cardview_email);
+            subjects = itemView.findViewById(R.id.cardview_subjects);
             rating = itemView.findViewById(R.id.cardview_rating);
             ratePerQuestion = itemView.findViewById(R.id.cardview_ratePerQuestion);
         }

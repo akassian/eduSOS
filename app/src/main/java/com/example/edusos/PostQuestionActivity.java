@@ -83,6 +83,7 @@ public class PostQuestionActivity extends AppCompatActivity {
                 postQuestion();
                 Toast.makeText(
                         PostQuestionActivity.this, "post success", Toast.LENGTH_SHORT).show();
+                onPostSuccess();
             }
         });
 
@@ -93,6 +94,7 @@ public class PostQuestionActivity extends AppCompatActivity {
                     String tagText = tagsBox.getText().toString().trim().toLowerCase();
                     final Chip entryChip = getChip(tags, tagText);
                     tags.addView(entryChip);
+                    tagsBox.setText("");
                     return true;
                 }
                 return false;
@@ -142,5 +144,10 @@ public class PostQuestionActivity extends AppCompatActivity {
             }
         });
         return chip;
+    }
+
+    private void onPostSuccess() {
+        Intent myIntent = new Intent(this, MainActivity.class);
+        startActivity(myIntent);
     }
 }
