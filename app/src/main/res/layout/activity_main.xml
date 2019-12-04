@@ -67,7 +67,15 @@
             app:layout_constraintBottom_toTopOf="@+id/textView3"
             app:layout_constraintStart_toStartOf="parent" />
 
-
+        <Button
+            android:id="@+id/chatListBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_postquestion"
+            app:layout_constraintBottom_toTopOf="@+id/splashLightbulb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageView
@@ -139,6 +147,17 @@
             app:layout_constraintBottom_toBottomOf="@+id/textView3"
             app:layout_constraintEnd_toStartOf="@+id/textView6"
             app:layout_constraintStart_toEndOf="@id/textView3" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Chat List"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/chatListBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/searchCard"

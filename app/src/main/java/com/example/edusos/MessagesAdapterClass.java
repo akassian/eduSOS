@@ -54,6 +54,7 @@ public class MessagesAdapterClass extends RecyclerView.Adapter<MessagesAdapterCl
     @Override
     public void onBindViewHolder(@NonNull msgViewHolder holder, int position) {
         String msgSenderID = account.getEmail().toString().split("@")[0];
+        msgSenderID = msgSenderID.replaceAll("\\.", "");
         Messages messages = msgList.get(position);
         String fromUserID = messages.getFrom();
         String fromMsgType = messages.getType();
