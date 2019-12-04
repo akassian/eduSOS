@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/receiver_msg_layout"
-        android:text="receiver msg"
+        android:text=""
         android:padding="10dp"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -23,7 +23,7 @@
         android:layout_marginTop="10dp"
         android:layout_alignTop="@+id/receiver_msg"
         android:background="@drawable/sender_msg_layout"
-        android:text="sender msg"
+        android:text=""
         android:textSize="14sp"
         android:textStyle="bold"/>
 

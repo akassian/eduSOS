@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton searchBoxButton;
     private EditText searchBox;
     private Button postButton;
+    private Button chatListBtn;
 
     ArrayList<Question> allQuestions;
     ArrayList<String> allQuestionKeys;
@@ -78,9 +79,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        db = FirebaseDatabase.getInstance().getReference();
-        dbQuestion = db.child("question");
+        chatListBtn = findViewById(R.id.chatListBtn);
+        chatListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openChatListActivity();
+            }
+        });
 
+        dbQuestion = FirebaseDatabase.getInstance().getReference("question");
         dbQuestion.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -136,7 +143,10 @@ public class MainActivity extends AppCompatActivity {
         openQuestionSearchResultActivity(matchedQuestions, matchQuestionKeys);
     }
 
-
+    public void openChatListActivity() {
+        Intent intent = new Intent(this, ChatListActivity.class);
+        startActivity(intent);
+    }
 
     public void openPostQuestionActivity() {
         Intent intent = new Intent(this, PostQuestionActivity.class);

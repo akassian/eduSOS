@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -161,6 +163,40 @@ public class ChatActivity extends AppCompatActivity {
                     InputMsg.setText("");
                 }
             });
+
+            // update Chat DB
+            final DatabaseReference chatRef = rootRef.child("Chat").child(SenderID);
+            Query query = chatRef.orderByChild("chatPartner").equalTo(ReceiverID);
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (!dataSnapshot.exists()) {
+                        DatabaseReference chatPushRef = chatRef.push();
+
+                        String chatSenderRef = "Chat/" + SenderID;
+                        String chatReceiverRef = "Chat/" + ReceiverID;
+
+                        String chatPushID = chatPushRef.getKey();
+                        Map chatBody = new HashMap();
+                        chatBody.put("userID", SenderID);
+                        chatBody.put("chatPartner", ReceiverID);
+                        Map chat = new HashMap();
+                        chat.put(chatSenderRef + "/" + chatPushID, chatBody);
+                        chat.put(chatReceiverRef + "/" + chatPushID, chatBody);
+                        rootRef.updateChildren(chat);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
+
+
+
         }
     }
 }

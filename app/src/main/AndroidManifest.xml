@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ChatActivity"></activity>
+        <activity android:name=".ChatListActivity"></activity>
         <activity android:name=".ExpertProfileActivity" />
         <activity android:name=".ExpertSearchResultActivity" />
         <activity android:name=".ExpertSearchActivity" />
