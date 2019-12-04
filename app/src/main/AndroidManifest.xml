@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.edusos">
 
     <application
@@ -9,7 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ChatActivity"></activity>
         <activity android:name=".ExpertProfileActivity" />
         <activity android:name=".ExpertSearchResultActivity" />
@@ -19,7 +21,9 @@
         <activity android:name=".RegisterExpertActivity" />
         <activity android:name=".AnswerQuestionActivity" />
         <activity android:name=".QuestionSearchResultActivity" />
-        <activity android:name=".PostQuestionActivity" />
+        <activity android:name=".PostQuestionActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+
         <activity android:name=".AskExpertActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

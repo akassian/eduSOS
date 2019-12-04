@@ -38,7 +38,7 @@
             android:id="@+id/splashLightbulb2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="55dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -55,11 +55,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/splashLightbulb2" />
+
         <TextView
             android:id="@+id/welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
             android:fontFamily="@font/montserrat"
             android:text=""
             android:textSize="25sp"
@@ -103,21 +103,21 @@
                     android:id="@+id/divider2"
                     android:layout_width="384dp"
                     android:layout_height="1dp"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="8dp"
                     android:background="?android:attr/listDivider"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
                 <View
                     android:id="@+id/divider4"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_marginBottom="80dp"
+                    android:layout_marginTop="60dp"
                     android:background="?android:attr/listDivider"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -126,7 +126,8 @@
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/montserrat"
                     android:text="Subject"
-                    app:layout_constraintBottom_toTopOf="@+id/divider2"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/divider4"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -134,16 +135,18 @@
                     android:id="@+id/editText"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="2dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@android:color/transparent"
                     android:cursorVisible="true"
                     android:ems="10"
                     android:fontFamily="@font/montserrat"
-                    android:hint="e.g. How to do matrix multiplication"
+                    android:hint="e.g. How to multiply a matrix"
                     android:inputType="textPersonName"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toTopOf="@+id/divider2"
+                    app:layout_constraintBottom_toTopOf="@+id/divider4"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView4"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -164,18 +167,68 @@
                     android:paddingBottom="16dp"
                     android:textSize="14sp"
                     app:boxBackgroundMode="none"
-                    app:layout_constraintBottom_toTopOf="@+id/divider4"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
-                <com.google.android.material.chip.ChipGroup
-                    android:layout_width="384dp"
-                    android:layout_height="128dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Tags"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+                <EditText
+                    android:id="@+id/tagsBox"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="e.g. Math, Programming, Physics"
+                    android:inputType="textPersonName"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView8"
+                    app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+                <HorizontalScrollView
+                    android:id="@+id/horizontalScrollView"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="55dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider4">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/tags"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginEnd="8dp"
+                            app:chipSpacing="5dp"
+                            app:singleLine="true" />
+                    </LinearLayout>
+                </HorizontalScrollView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
