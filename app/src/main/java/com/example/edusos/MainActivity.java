@@ -104,12 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-
-        super.onStart();
-    }
-
     private void searchQuestion(String searchText) {
         ArrayList<Question> matchedQuestions = new ArrayList<>();
         ArrayList<String> matchQuestionKeys = new ArrayList<>();
