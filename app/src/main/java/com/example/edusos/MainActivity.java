@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<Question> allQuestions;
     ArrayList<String> allQuestionKeys;
+    DatabaseReference db;
     DatabaseReference dbQuestion;
 
     @Override
@@ -77,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        dbQuestion = FirebaseDatabase.getInstance().getReference("question");
+        db = FirebaseDatabase.getInstance().getReference();
+        dbQuestion = db.child("question");
+
         dbQuestion.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -90,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
                         allQuestions.add(question);
                         allQuestionKeys.add(key);
                     }
-
                 }
             }
 
@@ -99,6 +101,13 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+    @Override
+    protected void onStart() {
+
+        super.onStart();
     }
 
     private void searchQuestion(String searchText) {
@@ -135,11 +144,6 @@ public class MainActivity extends AppCompatActivity {
     public void openPostQuestionActivity() {
         Intent intent = new Intent(this, PostQuestionActivity.class);
         startActivity(intent);
-    }
-
-    public void onPostClick(View button) {
-        Intent myIntent = new Intent(this, PostQuestionActivity.class);
-        this.startActivity(myIntent);
     }
 
     public void openQuestionSearchResultActivity(ArrayList<Question> matchedQuestions, ArrayList<String> matchQuestionKeys) {

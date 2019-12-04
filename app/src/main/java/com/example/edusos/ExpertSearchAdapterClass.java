@@ -73,6 +73,7 @@ public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchA
                 intent.putExtra("ratePerQuestion", chosenExpert.getRatePerQuestion());
                 intent.putExtra("questionsAnswered", chosenExpert.getQuestionsAnswered());
                 intent.putExtra("online", chosenExpert.getOnline());
+                intent.putExtra("imageURL", chosenExpert.getImageURL());
 
                 view.getContext().startActivity(intent);
             }
@@ -90,10 +91,10 @@ public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchA
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.cardview_name);
-            subjects = itemView.findViewById(R.id.cardview_subjects);
-            rating = itemView.findViewById(R.id.cardview_rating);
-            ratePerQuestion = itemView.findViewById(R.id.cardview_ratePerQuestion);
+            name = itemView.findViewById(R.id.expert_result_name);
+            subjects = itemView.findViewById(R.id.expert_result_subjects);
+            rating = itemView.findViewById(R.id.expert_result_rating);
+            ratePerQuestion = itemView.findViewById(R.id.expert_result_ratePerQuestion);
         }
     }
 }

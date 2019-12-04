@@ -80,6 +80,7 @@ tools:context=".ExpertSearchActivity">
         android:layout_marginTop="16dp"
         android:background="#b3b3ff"
 
+        android:checked="true"
         android:fontFamily="@font/montserrat"
         android:onClick="onCheckboxClicked"
         android:text="Experts currently online    "

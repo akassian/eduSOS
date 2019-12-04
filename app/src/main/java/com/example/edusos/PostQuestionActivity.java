@@ -1,18 +1,10 @@
 package com.example.edusos;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatEditText;
 import androidx.cardview.widget.CardView;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.Spanned;
-import android.text.TextWatcher;
-import android.text.style.ImageSpan;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
@@ -53,7 +45,7 @@ public class PostQuestionActivity extends AppCompatActivity {
         editTextsubject = (EditText) findViewById(R.id.editText);
         editTextquestion = (EditText) findViewById(R.id.editText2);
         textViewWelcome = (TextView) findViewById(R.id.welcome);
-        postCard = (CardView) findViewById(R.id.cardView2);
+        postCard = (CardView) findViewById(R.id.postButton);
         tagsBox = (EditText) findViewById(R.id.tagsBox);
         tags = (ChipGroup) findViewById(R.id.tags);
 

@@ -68,9 +68,9 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            subject = itemView.findViewById(R.id.cardview_subject);
-            question = itemView.findViewById(R.id.cardview_question);
-            answer = itemView.findViewById(R.id.cardview_answer);
+            subject = itemView.findViewById(R.id.question_result_subject);
+            question = itemView.findViewById(R.id.question_result_question);
+            answer = itemView.findViewById(R.id.question_result_answer);
         }
     }
 }

@@ -12,7 +12,7 @@ android:layout_height="wrap_content">
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/cardview_subject"
+        android:id="@+id/question_result_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Subject"
@@ -20,13 +20,13 @@ android:layout_height="wrap_content">
         android:textStyle="bold"
         android:padding="10dp"/>
     <TextView
-        android:id="@+id/cardview_question"
+        android:id="@+id/question_result_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="question"/>
     <TextView
-        android:id="@+id/cardview_answer"
+        android:id="@+id/question_result_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"

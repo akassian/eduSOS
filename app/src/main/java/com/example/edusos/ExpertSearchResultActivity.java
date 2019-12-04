@@ -2,11 +2,13 @@ package com.example.edusos;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -36,10 +38,11 @@ public class ExpertSearchResultActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String searchText = intent.getStringExtra("searchText");
-        final Boolean onlineOnly = intent.getBooleanExtra("onlineOnly", false);
+        final Boolean onlineOnly = intent.getBooleanExtra("onlineOnly", true);
         final String searchText1 = searchText;
         final Boolean onlineOnly1 = onlineOnly;
         dbExpert = FirebaseDatabase.getInstance().getReference("Experts");
+
         dbExpert.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -55,7 +58,7 @@ public class ExpertSearchResultActivity extends AppCompatActivity {
                 }
                 searchExpert(searchText1, onlineOnly1);
                 adapter = new ExpertSearchAdapterClass(matchedExperts, matchExpertKeys);
-                recyclerView = findViewById(R.id.recycleView);
+                recyclerView = findViewById(R.id.expertSearchRecycleView);
                 recyclerView.setAdapter(adapter);
             }
 

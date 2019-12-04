@@ -3,7 +3,6 @@ package com.example.edusos;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -38,7 +37,7 @@ public class RegisterExpertActivity extends AppCompatActivity {
         editTextPhone = (EditText) findViewById(R.id.editTextPhone);
         editTextSubjects = (EditText) findViewById(R.id.editTextSubjects);
         editTextRatePerQuestion = (EditText) findViewById(R.id.editTextRatePerQuestion);
-        postCard = (CardView) findViewById(R.id.cardView2);
+        postCard = (CardView) findViewById(R.id.signUpExpertButton);
 
         postCard.setOnClickListener(new View.OnClickListener() {
             @Override

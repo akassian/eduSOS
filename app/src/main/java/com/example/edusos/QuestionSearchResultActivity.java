@@ -25,7 +25,7 @@ public class QuestionSearchResultActivity extends AppCompatActivity {
         ArrayList<String> matchQuestionKeys = intent.getStringArrayListExtra("matchQuestionKeys");
         adapter = new QuestionSearchAdapterClass(matchedQuestions, matchQuestionKeys);
 
-        recyclerView = findViewById(R.id.recycleView);
+        recyclerView = findViewById(R.id.questionSearchRecycleView);
         recyclerView.setAdapter(adapter);
     }
 }
