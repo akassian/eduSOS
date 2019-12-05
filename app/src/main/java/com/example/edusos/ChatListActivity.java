@@ -26,8 +26,6 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.OnClick;
-
 public class ChatListActivity extends AppCompatActivity {
 
     private RecyclerView chatListRecyclerView;
@@ -45,7 +43,7 @@ public class ChatListActivity extends AppCompatActivity {
 
         account = GoogleSignIn.getLastSignedInAccount(this);
         if (account == null) {
-            Toast.makeText(this, "seems you don't log in", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You must Log in first", Toast.LENGTH_SHORT).show();
         } else {
             userAccount = account.getEmail().toString().split("@")[0];
         }

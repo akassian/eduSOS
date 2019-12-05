@@ -2,6 +2,7 @@ package com.example.edusos;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton searchBoxButton;
     private EditText searchBox;
     private Button postButton;
-    private Button chatListBtn;
+    private CardView chatListBtn;
 
     ArrayList<Question> allQuestions;
     ArrayList<String> allQuestionKeys;
