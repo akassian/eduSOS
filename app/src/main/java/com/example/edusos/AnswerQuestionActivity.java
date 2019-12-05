@@ -72,7 +72,7 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         ArrayList<String> topics = questionObj.getTopics();
         if (topics != null && topics.size() >0) {
             for (String topic: topics) {
-                Chip subjectChip = getChip(chipGroup, topic);
+                Chip subjectChip = getChip(topic);
                 chipGroup.addView(subjectChip);
             }
         }
@@ -107,14 +107,13 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         String answersStr = "";
         for (String answerItem: answer) {
             answersStr += "Answer: "+ answerItem + "\n\n";
-            answersStr = answersStr.substring(0, answersStr.length() - 2);
         }
+        answersStr = answersStr.substring(0, answersStr.length() - 2);
         previousAnswers.setText(answersStr);
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
+        answerInput.setText("");
     }
 
-    private Chip getChip(final ChipGroup entryChipGroup, String text) {
+    private Chip getChip(String text) {
         final Chip chip = new Chip(this);
         chip.setChipDrawable(ChipDrawable.createFromResource(this, R.xml.chip));
         int paddingDp = (int) TypedValue.applyDimension(

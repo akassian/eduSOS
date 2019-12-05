@@ -35,17 +35,17 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.example.edusos.EduUtils.stringToURL;
+
 public class ExpertProfileActivity extends AppCompatActivity {
     DatabaseReference dbExpert;
     Expert expertObj;
-//    EditText answerInput;
     String key;
     String name, email, phone, account;
     URL imageURL;
     Double rating, ratePerQuestion;
     int questionAnswered;
     Boolean online;
-    GoogleSignInAccount googleAccount;
     ArrayList<String> subjects;
 
     private CardView chatWithExpertBtn;
@@ -94,14 +94,6 @@ public class ExpertProfileActivity extends AppCompatActivity {
 
         textViewRating.setText(rating + " / 5");
         textViewQuestionsAnswered.setText(questionAnswered + " Answers");
-
-//        googleAccount = ((EduSOSApplication) this.getApplication()).getAccount();
-//
-//        if (googleAccount != null) {
-//            Log.d("SIGNIN_POST_", googleAccount.getDisplayName() + ",   " + googleAccount.getEmail());
-//            welcome.setText("Welcome " + googleAccount.getDisplayName().split(" ")[0] + "!");
-//
-//        }
 
         chatWithExpertBtn = findViewById(R.id.chatButton);
         chatWithExpertBtn.setOnClickListener(new View.OnClickListener() {
@@ -156,16 +148,6 @@ public class ExpertProfileActivity extends AppCompatActivity {
         return chip;
     }
 
-    protected URL stringToURL(String urlString){
-        try{
-            URL url = new URL(urlString);
-            return url;
-        }catch(MalformedURLException e){
-            Log.e("URL", "Image url invalid: " + urlString);
-        }
-        return null;
-    }
-
 
     private class ProfilePictureDownloadTask extends AsyncTask<URL, Void, Bitmap> {
         // Before the tasks execution
@@ -179,52 +161,15 @@ public class ExpertProfileActivity extends AppCompatActivity {
             HttpURLConnection connection;
 
             try{
-                // Initialize a new http url connection
                 connection = (HttpURLConnection) url.openConnection();
-
-                // Connect the http url connection
                 connection.connect();
-
-                // Get the input stream from http url connection
                 InputStream inputStream = connection.getInputStream();
-
-                /*
-                    BufferedInputStream
-                        A BufferedInputStream adds functionality to another input stream-namely,
-                        the ability to buffer the input and to support the mark and reset methods.
-                */
-                /*
-                    BufferedInputStream(InputStream in)
-                        Creates a BufferedInputStream and saves its argument,
-                        the input stream in, for later use.
-                */
-                // Initialize a new BufferedInputStream from InputStream
                 BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
-
-                /*
-                    decodeStream
-                        Bitmap decodeStream (InputStream is)
-                            Decode an input stream into a bitmap. If the input stream is null, or
-                            cannot be used to decode a bitmap, the function returns null. The stream's
-                            position will be where ever it was after the encoded data was read.
-
-                        Parameters
-                            is InputStream : The input stream that holds the raw data
-                                              to be decoded into a bitmap.
-                        Returns
-                            Bitmap : The decoded bitmap, or null if the image data could not be decoded.
-                */
-                // Convert BufferedInputStream to Bitmap object
                 Bitmap bmp = BitmapFactory.decodeStream(bufferedInputStream);
 
-                // Return the downloaded bitmap
                 return bmp;
-
-            }catch(IOException e){
+            } catch(IOException e) {
                 Log.e("NETWORK", "Image download error");
-            }finally{
-                // Disconnect the http url connection
-//                connection.disconnect();
             }
             return null;
         }

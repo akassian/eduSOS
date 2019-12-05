@@ -15,23 +15,24 @@
             android:id="@+id/splashLightbulb2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="55dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/expert_profile_splash"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/expert_profile_splash"
             app:srcCompat="@drawable/lightbulb" />
 
         <TextView
-            android:id="@+id/splashTitle2"
+            android:id="@+id/expert_profile_splash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat"
             android:text="eduSoS"
             android:textColor="@color/colorPrimary"
             android:textSize="36sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/splashLightbulb2" />
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/welcome"
@@ -39,30 +40,28 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
             android:text=""
-            android:textSize="25sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/splashTitle2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
             android:fontFamily="@font/montserrat"
             android:text="Ask a Question"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/welcome" />
+            app:layout_constraintTop_toBottomOf="@+id/expert_profile_splash" />
 
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
             app:cardCornerRadius="5dp"
@@ -70,7 +69,7 @@
             app:layout_constraintBottom_toTopOf="@+id/postButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" >
+            app:layout_constraintTop_toBottomOf="@+id/welcome">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -122,6 +121,8 @@
                     android:fontFamily="@font/montserrat"
                     android:hint="e.g. How to multiply a matrix"
                     android:inputType="textPersonName"
+                    android:selectAllOnFocus="true"
+                    android:textColorHighlight="@color/colorPrimary"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/divider4"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -142,6 +143,7 @@
                     android:paddingTop="16dp"
                     android:paddingEnd="16dp"
                     android:paddingBottom="16dp"
+                    android:textColorHighlight="@color/colorPrimary"
                     android:textSize="14sp"
                     app:boxBackgroundMode="none"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -175,6 +177,7 @@
                     android:hint="e.g. Math, Programming, Physics"
                     android:inputType="textPersonName"
                     android:singleLine="true"
+                    android:textColorHighlight="@color/colorPrimary"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
                     app:layout_constraintEnd_toEndOf="parent"

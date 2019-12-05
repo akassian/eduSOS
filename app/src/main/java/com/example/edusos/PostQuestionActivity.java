@@ -52,14 +52,14 @@ public class PostQuestionActivity extends AppCompatActivity {
         editTextsubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                closeKeyboard();
+//                closeKeyboard();
             }
         });
 
         editTextquestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                closeKeyboard();
+//                closeKeyboard();
             }
         });
 

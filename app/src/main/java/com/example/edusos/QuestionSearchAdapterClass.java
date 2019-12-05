@@ -58,6 +58,7 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
         }
         holder.answer.setText(answerStr);
 
+        holder.topics.removeAllViews();
         ArrayList<String> topics = questionObj.getTopics();
         if (topics != null && topics.size() > 0) {
             for (String topic: topics) {

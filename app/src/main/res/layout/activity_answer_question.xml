@@ -74,6 +74,7 @@
             android:hint="Your Answer"
             android:padding="10dp"
             android:text=""
+            android:textColorHighlight="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="@+id/answerQuestionButton"
             app:layout_constraintStart_toStartOf="@+id/answerQuestionButton"
             app:layout_constraintTop_toBottomOf="@+id/divider16" />

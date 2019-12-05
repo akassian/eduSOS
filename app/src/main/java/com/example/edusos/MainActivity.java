@@ -88,11 +88,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        dbQuestion = FirebaseDatabase.getInstance().getReference("question");
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+        dbQuestion = db.child("question");
+
         dbQuestion.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
+                    Log.d("CLARK", "snapshotExists");
                     allQuestions = new ArrayList<>();
                     allQuestionKeys = new ArrayList<>();
                     for (DataSnapshot ds: dataSnapshot.getChildren()) {
@@ -102,10 +105,12 @@ public class MainActivity extends AppCompatActivity {
                         allQuestionKeys.add(key);
                     }
                 }
+                Log.d("CLARK", "onDataChange");
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("CLARK", databaseError.getMessage());
                 Toast.makeText(MainActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
