@@ -25,7 +25,6 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
 
     ArrayList<Question> questionList;
     ArrayList<String> questionKeyList;
-    View mView;
 
     public QuestionSearchAdapterClass(ArrayList<Question> questionList, ArrayList<String> questionKeyList) {
         this.questionList = questionList;
@@ -36,7 +35,6 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.question_search_result_card_view, viewGroup, false);
-        mView = view;
         return new ViewHolder(view);
     }
 
@@ -51,18 +49,20 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
                 answerStr += "Answer: "+ answerItem + "\n";
             }
             answerStr = answerStr.substring(0, answerStr.length() - 1);
+            int color = ContextCompat.getColor(holder.itemView.getContext(), R.color.colorBlack);
+            holder.answer.setTextColor(color);
         } else {
             answerStr = "No answers yet";
-            int color = ContextCompat.getColor(mView.getContext(), R.color.colorPrimary);
+            int color = ContextCompat.getColor(holder.itemView.getContext(), R.color.colorPrimary);
             holder.answer.setTextColor(color);
         }
         holder.answer.setText(answerStr);
 
         ArrayList<String> topics = questionObj.getTopics();
-        if (topics != null && topics.size() >0) {
+        if (topics != null && topics.size() > 0) {
             for (String topic: topics) {
-                Chip subjectChip = getChip(holder.topics, topic);
-                holder.topics.addView(subjectChip);
+                Log.d("CHIP", topic);
+                holder.addChip(topic);
             }
         }
 
@@ -88,24 +88,12 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
         return questionList.size();
     }
 
-    private Chip getChip(final ChipGroup entryChipGroup, String text) {
-        Context context = mView.getContext();
-        final Chip chip = new Chip(context);
-        chip.setChipDrawable(ChipDrawable.createFromResource(context, R.xml.chip));
-        int paddingDp = (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 10,
-                context.getResources().getDisplayMetrics()
-        );
-        chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
-        chip.setText(text);
-        chip.setCloseIconVisible(false);
-        chip.setClickable(false);
-        return chip;
-    }
+
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView subject, question, answer;
         ChipGroup topics;
+        View mItemView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -113,6 +101,22 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
             question = itemView.findViewById(R.id.question_result_question);
             answer = itemView.findViewById(R.id.question_result_answer);
             topics = itemView.findViewById(R.id.question_list_chips);
+            mItemView = itemView;
+        }
+
+        private void addChip(String text) {
+            Context context = mItemView.getContext();
+            final Chip chip = new Chip(context);
+            chip.setChipDrawable(ChipDrawable.createFromResource(context, R.xml.chip));
+            int paddingDp = (int) TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 10,
+                    context.getResources().getDisplayMetrics()
+            );
+            chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
+            chip.setText(text);
+            chip.setCloseIconVisible(false);
+            chip.setClickable(false);
+            topics.addView(chip);
         }
     }
 }

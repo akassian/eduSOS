@@ -102,8 +102,10 @@ public class PostQuestionActivity extends AppCompatActivity {
         } else {
             String id = dbQuestions.push().getKey();
             ArrayList<String> topics = new ArrayList<>();
-            topics.add("topic1");
-            topics.add("topic2");
+            for (int i = 0; i < tags.getChildCount(); i++) {
+                Chip thisChip = (Chip) tags.getChildAt(i);
+                topics.add(thisChip.getText().toString());
+            }
             ArrayList<String> answer = new ArrayList<>();
             Question q = new Question(subject, question, topics, answer);
             dbQuestions.child(id).setValue(q);

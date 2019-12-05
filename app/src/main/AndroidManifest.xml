@@ -25,7 +25,6 @@
         <activity android:name=".PostQuestionActivity"
             android:windowSoftInputMode="adjustPan"></activity>
 
-        <activity android:name=".AskExpertActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

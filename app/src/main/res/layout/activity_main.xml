@@ -48,15 +48,15 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/chatListBtn"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
             android:backgroundTint="@color/colorPrimary"
             android:clickable="true"
+            app:layout_constraintEnd_toEndOf="@+id/ButtonLogIn"
+            app:layout_constraintStart_toStartOf="@+id/ButtonLogIn"
             card_view:cardCornerRadius="10dp"
             card_view:cardElevation="5dp"
-            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toBottomOf="@id/ButtonLogIn">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -81,17 +81,19 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/ButtonLogIn"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="45dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="16dp"
             android:backgroundTint="@color/colorPrimary"
+
             android:clickable="true"
             android:onClick="onLogInSignUpClick"
-
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/splashAccent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -142,19 +144,6 @@
             app:layout_constraintTop_toTopOf="parent"
             card_view:srcCompat="@drawable/lightbulb" />
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="409dp"
-            android:layout_height="1dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="32dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintBottom_toTopOf="@+id/splashInfo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-
 
         <TextView
             android:id="@+id/textView3"
@@ -186,7 +175,7 @@
             android:layout_width="330dp"
             android:layout_height="52dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/ic_search_box"
             app:cardCornerRadius="5dp"

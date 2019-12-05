@@ -117,15 +117,27 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> matchQuestionKeys = new ArrayList<>();
         Boolean match;
         Question question;
+
+
         //for (Question question: allQuestions) {
         for (int i = 0; i < allQuestions.size(); i++) {
             match = Boolean.FALSE;
             question = allQuestions.get(i);
+            boolean topicMatches = false;
+            for (String topic:question.getTopics()) {
+                if (topic.toLowerCase().contains(searchText)) {
+                    topicMatches = true;
+                }
+            }
             if (question.getQuestion().toLowerCase().contains(searchText)) {
                 matchedQuestions.add(allQuestions.get(i));
                 matchQuestionKeys.add(allQuestionKeys.get(i));
                         match = Boolean.TRUE;
             } else if (question.getSubject().toLowerCase().contains(searchText)) {
+                matchedQuestions.add(allQuestions.get(i));
+                matchQuestionKeys.add(allQuestionKeys.get(i));
+                match = Boolean.TRUE;
+            } else if (topicMatches) {
                 matchedQuestions.add(allQuestions.get(i));
                 matchQuestionKeys.add(allQuestionKeys.get(i));
                 match = Boolean.TRUE;
