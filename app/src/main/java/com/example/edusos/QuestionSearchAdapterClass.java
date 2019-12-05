@@ -90,6 +90,7 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
         chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
         chip.setText(text);
         chip.setCloseIconVisible(false);
+        chip.setClickable(false);
         return chip;
     }
 
