@@ -119,11 +119,11 @@ public class ExpertProfileActivity extends AppCompatActivity {
             }
         });
 
-//        if (online) {
-//            imageViewOnlineIndicator.setImageResource(R.drawable.ic_online);
-//        } else {
-//            imageViewOnlineIndicator.setImageResource(R.drawable.ic_offline);
-//        }
+        if (online) {
+            imageViewOnlineIndicator.setImageResource(R.drawable.ic_online);
+        } else {
+            imageViewOnlineIndicator.setImageResource(R.drawable.ic_offline);
+        }
 
         new ProfilePictureDownloadTask().execute(imageURL);
     }

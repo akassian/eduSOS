@@ -110,11 +110,6 @@ public class PostQuestionActivity extends AppCompatActivity {
         }
     }
 
-    public void onBackClick(View button) {
-        Intent myIntent = new Intent(this, MainActivity.class);
-        this.startActivity(myIntent);
-    }
-
     public void closeKeyboard(){
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);

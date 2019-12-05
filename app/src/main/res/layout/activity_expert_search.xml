@@ -12,29 +12,6 @@ tools:context=".ExpertSearchActivity">
     android:layout_height="match_parent">
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:onClick="onBackClick"
-        app:cardCornerRadius="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="14dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_backarrow" />
-    </androidx.cardview.widget.CardView>
-
     <TextView
         android:id="@+id/splashTitle"
         android:layout_width="wrap_content"
@@ -80,7 +57,7 @@ tools:context=".ExpertSearchActivity">
         android:layout_marginTop="16dp"
         android:background="#b3b3ff"
 
-        android:checked="true"
+        android:checked="false"
         android:fontFamily="@font/montserrat"
         android:onClick="onCheckboxClicked"
         android:text="Experts currently online    "

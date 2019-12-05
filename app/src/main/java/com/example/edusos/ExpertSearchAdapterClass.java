@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -58,6 +59,12 @@ public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchA
             holder.ratePerQuestion.setText("No Charge");
         }
 
+        if (expertObj.getOnline()) {
+            holder.onlineIndicator.setImageResource(R.drawable.ic_online);
+        } else {
+            holder.onlineIndicator.setImageResource(R.drawable.ic_offline);
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +95,7 @@ public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchA
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView name, subjects, rating, ratePerQuestion;
+        ImageView onlineIndicator;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -95,6 +103,7 @@ public class ExpertSearchAdapterClass extends RecyclerView.Adapter<ExpertSearchA
             subjects = itemView.findViewById(R.id.expert_result_subjects);
             rating = itemView.findViewById(R.id.expert_result_rating);
             ratePerQuestion = itemView.findViewById(R.id.expert_result_ratePerQuestion);
+            onlineIndicator = itemView.findViewById(R.id.expert_results_online_indicator);
         }
     }
 }

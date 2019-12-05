@@ -68,10 +68,4 @@ public class ExpertSearchActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-
-    public void onBackClick(View button) {
-        Intent myIntent = new Intent(this, MainActivity.class);
-        this.startActivity(myIntent);
-    }
-    
 }

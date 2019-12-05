@@ -2,12 +2,15 @@ package com.example.edusos;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -46,9 +49,15 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
         if (questionObj.getAnswer() != null && questionObj.getAnswer().size() >0) {
             for (String answerItem: questionObj.getAnswer()) {
                 answerStr += "Answer: "+ answerItem + "\n";
-
             }
+            answerStr = answerStr.substring(0, answerStr.length() - 1);
+        } else {
+            answerStr = "No answers yet";
+            int color = ContextCompat.getColor(mView.getContext(), R.color.colorPrimary);
+            holder.answer.setTextColor(color);
         }
+        holder.answer.setText(answerStr);
+
         ArrayList<String> topics = questionObj.getTopics();
         if (topics != null && topics.size() >0) {
             for (String topic: topics) {
@@ -57,7 +66,7 @@ public class QuestionSearchAdapterClass extends RecyclerView.Adapter<QuestionSea
             }
         }
 
-        holder.answer.setText(answerStr);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
