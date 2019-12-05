@@ -117,8 +117,11 @@ public class MainActivity extends AppCompatActivity {
                 matchedQuestions.add(allQuestions.get(i));
                 matchQuestionKeys.add(allQuestionKeys.get(i));
                         match = Boolean.TRUE;
-            }
-            if (!match && question.getAnswer() != null && question.getAnswer().size() > 0) {
+            } else if (question.getSubject().toLowerCase().contains(searchText)) {
+                matchedQuestions.add(allQuestions.get(i));
+                matchQuestionKeys.add(allQuestionKeys.get(i));
+                match = Boolean.TRUE;
+            } else if (question.getAnswer() != null && question.getAnswer().size() > 0) {
                 for (int j = 0; j < question.answer.size(); j++) {
                     if (!match && question.getAnswer().get(j).toLowerCase().contains(searchText)) {
                         matchedQuestions.add(question);
